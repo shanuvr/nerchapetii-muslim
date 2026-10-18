@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overscroll-behavior-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+.font-amiri {
+  font-family: 'Amiri', serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-malayalam {
+  font-family: 'Noto Serif Malayalam', serif;
+}
+
+/* Islamic Celestial Emerald Glows & Auras */
+.islamic-emerald-glow {
+  filter: drop-shadow(0 0 24px rgba(16, 185, 129, 0.45)) drop-shadow(0 0 48px rgba(5, 150, 105, 0.25));
+}
+
+.gold-hilal-glow {
+  filter: drop-shadow(0 0 20px rgba(250, 204, 21, 0.6)) drop-shadow(0 0 40px rgba(217, 119, 6, 0.35));
+}
+
+.sanctuary-emerald-aura {
+  background: radial-gradient(circle at center, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.1) 45%, transparent 70%);
+}
+
+.girih-spin {
+  transform-origin: center center;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  animation: spinSlow 75s linear infinite;
+}
+
+/* Realistic Fanous Lantern Flame Animation */
+.lantern-flicker {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+  transform: translate3d(0, 0, 0);
+  animation: flameFlicker 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg) translate3d(0, 0, 0); }
+  to { transform: rotate(360deg) translate3d(0, 0, 0); }
+}
+
+.spin-slow-serene {
+  transform-origin: center center;
+  will-change: transform;
+  animation: spinSlow 42s linear infinite;
+}
+
+@keyframes spinClockwise {
+  from { transform: rotate(0deg) translate3d(0, 0, 0); }
+  to { transform: rotate(360deg) translate3d(0, 0, 0); }
+}
+
+@keyframes spinCounterClockwise {
+  from { transform: rotate(360deg) translate3d(0, 0, 0); }
+  to { transform: rotate(0deg) translate3d(0, 0, 0); }
+}
+
+.spin-slow-cw {
+  transform-origin: center center;
+  will-change: transform;
+  animation: spinClockwise 40s linear infinite;
+}
+
+.spin-slow-ccw {
+  transform-origin: center center;
+  will-change: transform;
+  animation: spinCounterClockwise 32s linear infinite;
+}
+
+@keyframes flameFlicker {
+  0% { transform: scale3d(1, 1, 1) skewX(0deg); opacity: 0.94; }
+  25% { transform: scale3d(1.04, 0.97, 1) skewX(1.4deg); opacity: 1; }
+  50% { transform: scale3d(0.97, 1.04, 1) skewX(-1.6deg); opacity: 0.9; }
+  75% { transform: scale3d(1.03, 0.98, 1) skewX(1.1deg); opacity: 1; }
+  100% { transform: scale3d(1, 1, 1) skewX(0deg); opacity: 0.94; }
+}
+
+/* Floating Celestial Starlight Particle */
+@keyframes starFloat {
+  0% { transform: translateY(0px) scale(0.85); opacity: 0.3; }
+  50% { transform: translateY(-12px) scale(1.15); opacity: 0.9; }
+  100% { transform: translateY(0px) scale(0.85); opacity: 0.3; }
+}
+
+.starlight-particle {
+  animation: starFloat var(--dur, 4s) ease-in-out infinite;
+  animation-delay: var(--del, 0s);
+}
+
+/* Quran Verses Vertical News Ticker / Crawler Animation */
+@keyframes quranCrawlUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+.quran-news-crawl {
+  animation: quranCrawlUp 46s linear infinite;
+  will-change: transform;
+}
+
+.quran-news-crawl:hover {
+  animation-play-state: paused;
+}
+

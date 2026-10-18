@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <defs>
+    <radialGradient id="hilal-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hilal-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#fef08a"/>
+      <stop offset="70%" stop-color="#facc15"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <circle cx="24" cy="24" r="22" fill="url(#hilal-glow)"/>
+  {/* Crescent Moon */}
+  <path
+    d="M26 8 C16 8 8 16 8 26 C8 36 16 44 26 44 C31.5 44 36.5 41.5 39.8 37.5 C32 39 23.5 33 23.5 24 C23.5 16 30 10.5 38 11.5 C34.5 9.3 30.5 8 26 8 Z"
+    fill="url(#hilal-gold)"
+  />
+  {/* 5-pointed Star */}
+  <path
+    d="M33 19 L34.5 23 L39 23 L35.5 25.5 L37 30 L33 27 L29 30 L30.5 25.5 L27 23 L31.5 23 Z"
+    fill="#ffffff"
+  />
+</svg>

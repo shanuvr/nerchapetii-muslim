@@ -1,0 +1,157 @@
+import { useState, useMemo } from 'react';
+import {
+  Download,
+  IndianRupee,
+  RefreshCw,
+  Smartphone,
+  TrendingUp,
+  Users,
+  Filter,
+} from 'lucide-react';
+import PageHeader from '../components/PageHeader';
+import SectionCard from '../components/SectionCard';
+import StatCard from '../components/StatCard';
+import { DataTable, Pill } from '../components/DataTable';
+import { Button } from '../components/Controls';
+
+const ROWS = [
+  ['#MB-4821', '₹500', 'Today, 10:42 AM', 'UPI', 'Success'],
+  ['#MB-4820', '₹200', 'Today, 10:31 AM', 'UPI', 'Success'],
+  ['#MB-4819', '₹1,000', 'Today, 10:18 AM', 'UPI', 'Success'],
+  ['#MB-4818', '₹100', 'Today, 09:57 AM', 'Cash', 'Success'],
+  ['#MB-4817', '₹2,000', 'Today, 09:44 AM', 'UPI', 'Pending'],
+  ['#MB-4816', '₹50', 'Today, 09:12 AM', 'UPI', 'Failed'],
+  ['#MB-4815', '₹500', 'Today, 08:50 AM', 'UPI', 'Success'],
+  ['#MB-4813', '₹100', 'Today, 07:15 AM', 'UPI', 'Success'],
+];
+
+const DENOM = [
+  { label: '₹10', pct: 86 },
+  { label: '₹20', pct: 68 },
+  { label: '₹50', pct: 75 },
+  { label: '₹100', pct: 60 },
+  { label: '₹200', pct: 40 },
+  { label: '₹500', pct: 30 },
+];
+
+const WEEK = [
+  { day: 'Mon', value: 1940 },
+  { day: 'Tue', value: 2380 },
+  { day: 'Wed', value: 2150 },
+  { day: 'Thu', value: 3620 },
+  { day: 'Fri (Juma)', value: 11240 },
+  { day: 'Sat', value: 4840 },
+  { day: 'Sun', value: 4310 },
+];
+
+const PEAK = Math.max(...WEEK.map((d) => d.value));
+
+export default function Dashboard() {
+  const [filter, setFilter] = useState('All');
+
+  const filteredRows = useMemo(() => {
+    if (filter === 'All') return ROWS;
+    return ROWS.filter((r) => r[4] === filter);
+  }, [filter]);
+
+  return (
+    <div className="space-y-4">
+      <PageHeader
+        title="Dashboard & Sadaqah Audit"
+        subtitle="Live overview of today's Palli Bhandaram offerings and the health of your mosque kiosk."
+        actions={
+          <>
+            <Button variant="ghost" icon={RefreshCw}>
+              Refresh
+            </Button>
+            <Button variant="primary" icon={Download}>
+              Export Audit
+            </Button>
+          </>
+        }
+      />
+
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        <StatCard title="Today's Sadaqah" value="₹16,840" change="+24% vs last week" icon={IndianRupee} tone="emerald" />
+        <StatCard title="Total Devotees" value="312" change="Average ₹54 per donor" icon={Users} tone="emerald" />
+        <StatCard title="Success Rate" value="98.5%" change="280 successful transactions" icon={TrendingUp} tone="indigo" />
+        <StatCard title="Active Kiosks" value="02 Online" change="Main Gate & Dargah Corridor" icon={Smartphone} tone="amber" />
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="lg:col-span-2">
+          <SectionCard title="Weekly Sadaqah Growth" description="Daily collections reaching major peak during Friday Juma prayer.">
+            <div className="h-48 flex items-end justify-between gap-2 pt-6 pb-2 px-2">
+              {WEEK.map((item) => {
+                const heightPct = Math.round((item.value / PEAK) * 100);
+                return (
+                  <div key={item.day} className="flex-1 flex flex-col items-center gap-2">
+                    <span className="text-[10px] font-semibold text-slate-600">₹{item.value}</span>
+                    <div className="w-full max-w-[34px] rounded-t-lg bg-emerald-100 hover:bg-emerald-600 transition-colors relative flex items-end justify-center" style={{ height: `${heightPct}%` }}>
+                      <div className="w-full rounded-t-lg bg-emerald-600 h-full opacity-90" />
+                    </div>
+                    <span className="text-[9.5px] font-medium text-slate-500 truncate w-full text-center">{item.day}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </SectionCard>
+        </div>
+
+        <div>
+          <SectionCard title="Popular Offerings" description="Relative frequency of coins & banknotes offered.">
+            <div className="space-y-3 pt-1">
+              {DENOM.map((d) => (
+                <div key={d.label} className="space-y-1">
+                  <div className="flex justify-between text-xs font-semibold text-slate-700">
+                    <span>{d.label}</span>
+                    <span className="text-slate-500">{d.pct}%</span>
+                  </div>
+                  <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                    <div className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-600" style={{ width: `${d.pct}%` }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </SectionCard>
+        </div>
+      </div>
+
+      <SectionCard title="Recent Offerings Log" description="Auditable records of parishioner Sadaqah received.">
+        <div className="flex items-center gap-2 mb-3">
+          <Filter className="w-3.5 h-3.5 text-slate-400" />
+          <span className="text-xs font-bold text-slate-600">Filter status:</span>
+          {['All', 'Success', 'Pending', 'Failed'].map((status) => (
+            <button
+              key={status}
+              onClick={() => setFilter(status)}
+              className={`px-2.5 py-0.5 rounded-full text-xs font-semibold border transition-all cursor-pointer ${
+                filter === status
+                  ? 'bg-emerald-600 text-white border-emerald-600'
+                  : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
+              }`}
+            >
+              {status}
+            </button>
+          ))}
+        </div>
+
+        <DataTable
+          headers={['Receipt No.', 'Amount', 'Time', 'Method', 'Status']}
+          rows={filteredRows.map(([id, amt, time, method, status]) => [
+            <span key="1" className="font-mono font-semibold text-emerald-800">{id}</span>,
+            <span key="2" className="font-cinzel font-bold text-slate-900">{amt}</span>,
+            <span key="3" className="text-slate-500">{time}</span>,
+            <span key="4" className="text-slate-600 font-medium">{method}</span>,
+            <Pill
+              key="5"
+              tone={status === 'Success' ? 'emerald' : status === 'Pending' ? 'amber' : 'rose'}
+            >
+              {status}
+            </Pill>,
+          ])}
+        />
+      </SectionCard>
+    </div>
+  );
+}
