@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Share2, Volume2, VolumeX, Maximize2, X, HeartHandshake, Play, Pause } from 'lucide-react';
-import { playPrayerChime } from '../utils/audio';
+import { ArrowLeft, Share2, Maximize2, X, HeartHandshake } from 'lucide-react';
 
 /* Mosque collection UPI handle */
 const MOSQUE_UPI_ID = 'cheramanmasjid@upi';
@@ -72,84 +71,45 @@ const QURAN_VERSES = [
 ];
 
 /**
- * Holy Quran Verses Live Vertical News Ticker Card
- * Continuous vertical news-channel crawl of blessed Quranic Ayahs in Arabic & Malayalam
+ * Holy Quran Verses Sanctuary Card
+ * Continuous vertical crawl of blessed Quranic Ayahs in Arabic & Malayalam
  */
 function HolyMasjidCard({ onExpand, mosqueName }) {
-  const [isMuted, setIsMuted] = useState(true);
-  const [isPaused, setIsPaused] = useState(false);
-
-  const toggleSound = (e) => {
-    e?.stopPropagation();
-    const next = !isMuted;
-    setIsMuted(next);
-    if (next) {
-      playPrayerChime();
-    }
-  };
-
-  const togglePause = (e) => {
-    e?.stopPropagation();
-    setIsPaused((p) => !p);
-  };
-
   return (
     <div className="relative w-full h-full flex flex-col items-center overflow-hidden rounded-2xl bg-[#011c13] border border-emerald-400/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_8px_24px_rgba(0,0,0,0.8)] backdrop-blur-md">
-      {/* Top News Header Row */}
-      <div className="w-full z-30 flex items-center justify-between px-3 py-1.5 bg-[#01140e]/95 border-b border-emerald-400/30 shrink-0">
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
-          </span>
-          <span className="font-malayalam text-[10.5px] sm:text-[11.5px] font-bold text-emerald-100 tracking-wide">
-            വിശുദ്ധ ഖുർആൻ സന്ദേശങ്ങൾ
-          </span>
-          <span className="text-[7.5px] uppercase tracking-wider text-[#f5c253] font-semibold">
-            · LIVE TICKER
-          </span>
-        </div>
+      {/* Top Header Row */}
+      <div className="w-full z-30 flex items-center justify-between px-3.5 py-2 bg-[#01140e]/95 border-b border-emerald-400/30 shrink-0">
+        <span className="font-malayalam text-[11px] sm:text-[12px] font-bold text-emerald-100 tracking-wide">
+          വിശുദ്ധ ഖുർആൻ സന്ദേശങ്ങൾ
+        </span>
 
-        {/* Top Sound Toggle Pill */}
-        <button
-          onClick={toggleSound}
-          type="button"
-          aria-label={isMuted ? 'Turn Sound On' : 'Turn Sound Off'}
-          className={`flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[9px] font-semibold border transition-all cursor-pointer ${
-            !isMuted
-              ? 'bg-emerald-500/25 border-emerald-300 text-emerald-200 shadow-[0_0_8px_rgba(52,211,153,0.4)]'
-              : 'bg-[#02251a]/90 border-emerald-400/40 text-emerald-300 hover:text-white'
-          }`}
-        >
-          {!isMuted ? (
-            <>
-              <Volume2 className="w-2.5 h-2.5 text-emerald-300" />
-              <span>Sound ON</span>
-            </>
-          ) : (
-            <>
-              <VolumeX className="w-2.5 h-2.5 text-emerald-400/70" />
-              <span>Sound OFF</span>
-            </>
-          )}
-        </button>
+        {onExpand && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onExpand({
+                title: 'വിശുദ്ധ ഖുർആൻ സൂക്തങ്ങൾ · Holy Verses',
+                desc: 'Blessed verses from the Holy Quran on Sadaqah and Divine Rewards.',
+                verses: QURAN_VERSES,
+              });
+            }}
+            type="button"
+            aria-label="Expand Verses"
+            className="p-1 rounded-full bg-[#02251a]/90 border border-emerald-400/40 text-emerald-200 hover:text-white backdrop-blur-md shadow-sm active:scale-95 transition-all cursor-pointer"
+          >
+            <Maximize2 className="w-3.5 h-3.5" />
+          </button>
+        )}
       </div>
 
-      {/* Main Vertical News Crawl Window */}
-      <div
-        className="relative w-full flex-1 min-h-0 overflow-hidden bg-gradient-to-b from-[#021f15] via-[#032e20]/80 to-[#01140e] flex flex-col cursor-pointer select-none"
-        onClick={togglePause}
-        title={isPaused ? "സ്ക്രോൾ പുനരാരംഭിക്കാൻ ടാപ്പ് ചെയ്യുക" : "സ്ക്രോൾ നിർത്താൻ ടാപ്പ് ചെയ്യുക"}
-      >
+      {/* Main Vertical Crawl Window */}
+      <div className="relative w-full flex-1 min-h-0 overflow-hidden bg-gradient-to-b from-[#021f15] via-[#032e20]/80 to-[#01140e] flex flex-col select-none">
         {/* Soft feather masks at top and bottom */}
         <div className="absolute top-0 inset-x-0 h-10 bg-gradient-to-b from-[#01160f] via-[#01160f]/80 to-transparent pointer-events-none z-20" />
         <div className="absolute bottom-0 inset-x-0 h-12 bg-gradient-to-t from-[#01120b] via-[#01120b]/90 to-transparent pointer-events-none z-20" />
 
         {/* Upward scrolling content track (seamless duplicated array) */}
-        <div
-          className="w-full flex flex-col items-center px-3 pt-6 pb-4 quran-news-crawl"
-          style={{ animationPlayState: isPaused ? 'paused' : 'running' }}
-        >
+        <div className="w-full flex flex-col items-center px-3 pt-6 pb-4 quran-news-crawl">
           {[...QURAN_VERSES, ...QURAN_VERSES].map((verse, index) => (
             <div
               key={`${verse.id}-${index}`}
@@ -188,57 +148,6 @@ function HolyMasjidCard({ onExpand, mosqueName }) {
             </div>
           ))}
         </div>
-
-        {/* Bottom Floating Status Bar */}
-        <div className="absolute bottom-1.5 inset-x-2 z-30 flex items-center justify-between pointer-events-auto">
-          <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#01140e]/90 border border-emerald-400/40 text-emerald-200 text-[9px] font-medium backdrop-blur-md shadow-lg">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500" />
-            </span>
-            <span className="font-bold text-red-400">LIVE</span>
-            <span className="text-slate-500">|</span>
-            <span className="font-malayalam text-emerald-100 text-[8.5px]">വാർത്താ ചുരുൾ</span>
-          </div>
-
-          <div className="flex items-center gap-1.5">
-            <button
-              onClick={togglePause}
-              type="button"
-              className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#01140e]/90 border border-emerald-400/40 text-emerald-200 hover:text-white text-[9px] font-medium backdrop-blur-md shadow-lg active:scale-95 transition-all cursor-pointer"
-            >
-              {isPaused ? (
-                <>
-                  <Play className="w-2.5 h-2.5 text-[#f5c253]" />
-                  <span>സ്ക്രോൾ</span>
-                </>
-              ) : (
-                <>
-                  <Pause className="w-2.5 h-2.5 text-[#f5c253]" />
-                  <span>നിർത്തുക</span>
-                </>
-              )}
-            </button>
-
-            {onExpand && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onExpand({
-                    title: 'വിശുദ്ധ ഖുർആൻ സൂക്തങ്ങൾ · Holy Verses',
-                    desc: 'Blessed verses from the Holy Quran on Sadaqah and Divine Rewards.',
-                    verses: QURAN_VERSES,
-                  });
-                }}
-                type="button"
-                aria-label="Expand Verses"
-                className="p-1 rounded-full bg-[#01140e]/90 border border-emerald-400/40 text-emerald-200 hover:text-white backdrop-blur-md shadow-lg active:scale-95 transition-all cursor-pointer"
-              >
-                <Maximize2 className="w-3 h-3" />
-              </button>
-            )}
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -265,10 +174,7 @@ function SanctuaryModal({ item, onClose }) {
         className="relative w-full max-w-[380px] max-h-[85vh] flex flex-col rounded-3xl overflow-hidden bg-[#011a12] border border-emerald-400/50 shadow-[0_20px_60px_rgba(0,0,0,0.9),0_0_40px_rgba(16,185,129,0.3)] p-4 text-center z-10"
       >
         <div className="flex items-center justify-between mb-2 shrink-0">
-          <div className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
-            <span className="font-malayalam text-xs font-bold text-emerald-200 tracking-wider">ഖുർആൻ സന്ദേശങ്ങൾ</span>
-          </div>
+          <span className="font-malayalam text-xs font-bold text-emerald-200 tracking-wider">ഖുർആൻ സന്ദേശങ്ങൾ</span>
           <button
             onClick={onClose}
             aria-label="Close"
