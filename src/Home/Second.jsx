@@ -375,7 +375,7 @@ export default function Second({
         initial={{ opacity: 0, scale: 0.94, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-        className="relative z-30 my-auto w-52 sm:w-56 shrink-0"
+        className="relative z-30 my-auto w-52 sm:w-40 shrink-0"
       >
         <motion.div ref={boxRef} animate={boxAnim} className="relative">
           <AnimatePresence>
@@ -397,7 +397,7 @@ export default function Second({
       </motion.div>
 
       {/* 4. Running Total Display */}
-      <div className="relative z-10 w-full my-auto flex items-center justify-center gap-2.5 shrink-0">
+      <div className="relative z-10 w-full my-auto sm:my-1 flex items-center justify-center gap-2.5 shrink-0">
         <span className="font-malayalam text-xs text-emerald-200/90 font-medium">ആകെ സദഖ</span>
         <div className="relative h-7 overflow-hidden min-w-[88px] px-3.5 flex items-center justify-center rounded-full bg-[#011811]/90 border border-emerald-400/50 backdrop-blur-md shadow-[0_0_18px_rgba(16,185,129,0.3)]">
           <AnimatePresence mode="popLayout" initial={false}>
@@ -417,7 +417,7 @@ export default function Second({
       </div>
 
       {/* 5. Coins Section */}
-      <div className="relative z-10 w-full mt-1 shrink-0 px-1">
+      <div className="relative z-10 w-full mt-1 sm:mt-0.5 shrink-0 px-1">
         <Label className="font-malayalam text-emerald-200/90 mb-1.5">നാണയങ്ങൾ · Coins</Label>
         <div className="grid grid-cols-5 gap-1.5 px-1">
           {COINS.map((value, i) => (
@@ -441,9 +441,9 @@ export default function Second({
       </div>
 
       {/* 6. Notes Section */}
-      <div className="relative z-10 w-full mt-2 shrink-0 px-1">
-        <Label className="font-malayalam text-emerald-200/90 mb-1.5">നോട്ടുകൾ · Notes</Label>
-        <div className="grid grid-cols-2 gap-2.5 px-0.5">
+      <div className="relative z-10 w-full mt-2 sm:mt-1 shrink-0 px-1">
+        <Label className="font-malayalam text-emerald-200/90 mb-1.5 sm:mb-1">നോട്ടുകൾ · Notes</Label>
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-1.5 px-0.5">
           {NOTES.map((value, i) => (
             <motion.button
               key={value}
@@ -454,7 +454,7 @@ export default function Second({
               onClick={(e) => placeOffering(value, e)}
               disabled={paying}
               aria-label={`Offer ${value} rupee note`}
-              className={`mx-auto w-full max-w-[125px] flex items-center justify-center focus:outline-none focus-visible:ring-1 focus-visible:ring-emerald-300 rounded-md transition-opacity ${
+              className={`mx-auto w-full max-w-[125px] sm:max-w-[100px] flex items-center justify-center focus:outline-none focus-visible:ring-1 focus-visible:ring-emerald-300 rounded-md transition-opacity ${
                 paying ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'
               }`}
             >
@@ -470,7 +470,7 @@ export default function Second({
           onClick={submitOffering}
           disabled={amount === 0 || paying}
           whileTap={amount === 0 || paying ? undefined : { scale: 0.97 }}
-          className={`w-full py-2.5 px-6 rounded-2xl font-malayalam text-base border transition-all duration-300 flex items-center justify-center gap-2 ${
+          className={`w-full py-2.5 sm:py-2 px-6 rounded-2xl font-malayalam text-base sm:text-sm border transition-all duration-300 flex items-center justify-center gap-2 ${
             paying
               ? 'bg-gradient-to-r from-emerald-700/80 via-teal-600/80 to-emerald-700/80 text-white font-semibold border-emerald-400/40 cursor-wait'
               : amount > 0
@@ -489,7 +489,7 @@ export default function Second({
         </motion.button>
 
         {/* Status line */}
-        <div className="h-4 mt-1 flex items-center justify-center">
+        <div className="h-4 sm:h-2 mt-1 sm:mt-0.5 flex items-center justify-center">
           <AnimatePresence mode="wait" initial={false}>
             {paying && (
               <motion.p
