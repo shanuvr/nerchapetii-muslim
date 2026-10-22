@@ -154,7 +154,7 @@ export default function PhonePreview({ screen = 'welcome', caption }) {
         </div>
 
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-          <img src="/newbg.jpg" alt="Sanctuary" className="w-full h-full object-cover object-center brightness-[0.93]" />
+          <img src="/newbg.webp" alt="Sanctuary" className="w-full h-full object-cover object-center brightness-[0.93]" />
           <div className="absolute inset-0 bg-black/15" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#01140e]/45 via-transparent to-[#01140e]/55" />
         </div>

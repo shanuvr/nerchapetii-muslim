@@ -41,7 +41,7 @@ export default function App() {
         {/* 1. Sacred Mosque Background Image (Balanced Depth) */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
           <img
-            src="/newbg.jpg"
+            src="/newbg.webp"
             alt="Islamic Mosque Sanctuary Background"
             className="w-full h-full object-cover object-center select-none brightness-[0.93]"
           />

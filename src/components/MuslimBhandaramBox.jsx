@@ -8,7 +8,7 @@ export default function MuslimBhandaramBox({ className = '', slotGlow = false })
     <div className={`relative w-full flex flex-col items-center select-none transform-gpu ${className}`}>
       {/* 3D Islamic Bhandaram / Hundi Chest */}
       <img
-        src="/new-hundi.png"
+        src="/new-hundi.webp"
         alt="Mosque Palli Bhandaram offering chest"
         draggable="false"
         decoding="async"
