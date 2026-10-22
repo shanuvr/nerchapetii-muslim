@@ -198,8 +198,8 @@ export default function Second({
 
       const isCoin = moneyKind(value) === 'coin';
       const target = {
-        x: bhandaram.left + bhandaram.width * 0.55,
-        y: bhandaram.top + bhandaram.height * 0.364,
+        x: bhandaram.left + bhandaram.width * 0.531,
+        y: bhandaram.top + bhandaram.height * 0.251,
       };
 
       const id = ++flightId;
@@ -387,7 +387,7 @@ export default function Second({
                 initial={{ opacity: 0, y: -26, scale: 0.5, rotate: -25 }}
                 animate={{ opacity: 0.9, y: p.y, scale: 1, rotate: p.r }}
                 transition={{ duration: 0.55, ease: 'easeOut' }}
-                className="absolute left-[55%] -translate-x-1/2 top-[34%] w-6 h-6 object-contain pointer-events-none"
+                className="absolute left-[53.1%] -translate-x-1/2 top-[23%] w-6 h-6 object-contain pointer-events-none"
               />
             ))}
           </AnimatePresence>

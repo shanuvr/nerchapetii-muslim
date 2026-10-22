@@ -1,8 +1,8 @@
 import { MONEY } from '../data/money';
 
 const ASSETS_TO_PRELOAD = [
-  '/bg.png',
-  '/hundi.png',
+  '/newbg.jpg',
+  '/new-hundi.png',
   ...Object.values(MONEY).map((m) => m.src),
 ];
 

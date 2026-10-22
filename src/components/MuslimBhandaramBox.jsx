@@ -8,7 +8,7 @@ export default function MuslimBhandaramBox({ className = '', slotGlow = false })
     <div className={`relative w-full flex flex-col items-center select-none transform-gpu ${className}`}>
       {/* 3D Islamic Bhandaram / Hundi Chest */}
       <img
-        src="/hundi.png"
+        src="/new-hundi.png"
         alt="Mosque Palli Bhandaram offering chest"
         draggable="false"
         decoding="async"
@@ -19,16 +19,16 @@ export default function MuslimBhandaramBox({ className = '', slotGlow = false })
       {/* Dynamic Animated Slot Glow Flare */}
       {slotGlow && (
         <span
-          className="absolute pointer-events-none rounded-full blur-[5px] transition-opacity duration-300"
+          className="absolute pointer-events-none rounded-full blur-[4px] transition-opacity duration-300"
           style={{
-            top: '36.4%',
-            left: '55%',
+            top: '25.1%',
+            left: '53.1%',
             transform: 'translate(-50%, -50%)',
-            width: '38%',
-            height: '9px',
+            width: '20%',
+            height: '7px',
             background:
               'radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, rgba(52,211,153,0.85) 40%, rgba(16,185,129,0.4) 70%, transparent 100%)',
-            boxShadow: '0 0 18px rgba(52,211,153,0.85), 0 0 32px rgba(250,204,21,0.5)',
+            boxShadow: '0 0 16px rgba(52,211,153,0.9), 0 0 28px rgba(250,204,21,0.6)',
           }}
         />
       )}
