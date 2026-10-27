@@ -105,36 +105,35 @@ function SadaqahMock() {
   return (
     <>
       <div className="flex items-center justify-between shrink-0">
-        <span className="w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-400/30" />
-        <span className="text-[7px] uppercase tracking-[0.26em] text-emerald-200 font-bold">Sadaqah</span>
+        <span className="w-5 h-5 rounded-full bg-emerald-500/15 border border-emerald-400/30 flex items-center justify-center text-[7px] text-emerald-200">‹</span>
+        <span className="w-1.5 h-1.5 rounded-full bg-[#f5c253]" />
         <span className="w-5 h-5 flex items-center justify-center text-emerald-400 text-xs">☪</span>
       </div>
 
-      <div className="pt-1 text-center shrink-0">
-        <p className="font-malayalam text-[8px] leading-tight text-white font-bold">സദഖ അല്ലാഹു സ്വീകരിക്കട്ടെ</p>
-        <p className="mt-0.5 text-[5.5px] uppercase tracking-[0.2em] text-emerald-300 font-semibold">Sadaqah Mubarak · Accepted</p>
+      <div className="pt-0.5 text-center shrink-0">
+        <p className="font-malayalam text-[7.5px] leading-tight text-white font-semibold">അല്ലാഹു നിങ്ങളെ സമൃദ്ധമായി അനുഗ്രഹിക്കട്ടെ</p>
       </div>
 
-      <div className="flex-1 min-h-0 flex flex-col items-center justify-center p-2 my-1 rounded-xl bg-black/40 border border-emerald-400/30 overflow-hidden text-center">
-        <span className="text-[6px] text-[#f5c253] font-bold uppercase tracking-wider mb-0.5">🔴 ലൈവ് ഖുർആൻ സൂക്തങ്ങൾ</span>
-        <p className="font-amiri text-[8.5px] text-white font-bold leading-tight" dir="rtl">مَّثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ...</p>
-        <p className="font-malayalam text-[6.5px] text-emerald-100/90 leading-tight mt-0.5">&ldquo;ദാനം ചെയ്യുന്നവർക്ക് അല്ലാഹു ഇരട്ടിയാക്കി നൽകുന്നു&rdquo;</p>
+      <div className="flex-1 min-h-0 flex flex-col items-center justify-center p-2 my-1 rounded-xl bg-[#01140e]/35 border border-emerald-400/25 overflow-hidden text-center backdrop-blur-xs max-w-[185px] mx-auto">
+        <span className="text-[5.5px] text-[#fde68a] bg-[#f5c253]/20 border border-[#f5c253]/40 px-1.5 py-0.2 rounded-full font-bold mb-0.5">വിശുദ്ധ ഖുർആൻ സൂക്തം</span>
+        <p className="font-malayalam text-[6.5px] text-white leading-tight my-0.5">&ldquo;അല്ലാഹുവിന്റെ മാർഗ്ഗത്തിൽ ധനം ചിലവഴിക്കുന്നവരുടെ ഉപമ ഒരു ധാന്യമണി പോലെയാണ്; അത് ഏഴ് കതിരുകൾ മുളപ്പിച്ചു, ഓരോ കതിരിലും നൂറ് ധാന്യമണികൾ ഉണ്ടാകുകയും ചെയ്യുന്നു. അല്ലാഹു താൻ ഉദ്ദേശിക്കുന്നവർക്ക് ഇരട്ടിയാക്കി നൽകുന്നു.&rdquo;</p>
+        <span className="text-[6px] text-[#fde68a] font-amiri font-bold bg-[#f5c253]/15 px-1.5 py-0.2 rounded-full mt-0.5" dir="rtl">سورة البقرة 2:261</span>
       </div>
 
-      <div className="space-y-1.5 shrink-0">
-        <div className="rounded-xl overflow-hidden border border-emerald-400/35 bg-white text-slate-900 p-2 shadow-xs">
-          <div className="text-[6.5px] text-emerald-950 font-bold truncate mb-1">{SAMPLE.mosqueName}</div>
+      <div className="space-y-1 shrink-0">
+        <div className="rounded-xl overflow-hidden border border-emerald-400/30 bg-[#011812]/70 text-white p-2 shadow-xs backdrop-blur-md">
+          <div className="text-[6.5px] text-white font-bold truncate mb-0.5">{SAMPLE.mosqueName}</div>
           <div className="flex items-center justify-between">
-            <span className="text-[6px] uppercase tracking-[0.18em] text-slate-500 font-bold">Total</span>
-            <span className="font-cinzel text-[12px] font-bold text-emerald-950">₹{SAMPLE.amount}</span>
+            <span className="text-[5.5px] uppercase tracking-[0.16em] text-emerald-200/70 font-semibold">Total Offering</span>
+            <span className="font-cinzel text-[11px] font-bold text-white">₹{SAMPLE.amount}</span>
           </div>
-          <div className="flex items-center justify-between text-[6px] text-emerald-700 font-medium mt-1">
-            <span>UPI</span>
-            <span>{SAMPLE.upiId}</span>
+          <div className="flex items-center justify-between text-[5.5px] text-emerald-300 font-medium mt-0.5 border-t border-emerald-500/20 pt-0.5">
+            <span>PAID TO</span>
+            <span className="font-mono">{SAMPLE.upiId}</span>
           </div>
         </div>
-        <div className="w-full py-1.5 rounded-lg bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-600 text-center font-malayalam text-[9px] font-bold text-white shadow-xs">
-          മറ്റൊരു സദഖ
+        <div className="w-full py-1.5 rounded-lg bg-gradient-to-r from-emerald-600 via-teal-500 to-emerald-600 text-center font-malayalam text-[8.5px] font-bold text-white shadow-xs">
+          മറ്റൊരു സമർപ്പണം
         </div>
       </div>
     </>
