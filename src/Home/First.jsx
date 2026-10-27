@@ -82,14 +82,14 @@ export default function First({
           />
 
           <div className="relative flex items-center justify-center">
-            {/* Left Lantern */}
+            {/* Left Hanging Royal Lantern */}
             <motion.div
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.15, duration: 0.5 }}
-              className="absolute -left-12 sm:-left-16 bottom-2 z-10"
+              initial={{ opacity: 0, y: -24, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute -left-11 sm:-left-14 -top-3 z-10 pointer-events-none"
             >
-              <IslamicLantern height={68} />
+              <IslamicLantern height={98} side="left" swingDelay={0} />
             </motion.div>
 
             {/* Hilal Crescent */}
@@ -102,14 +102,14 @@ export default function First({
               <HilalCrescent className="w-full h-full drop-shadow-[0_0_28px_rgba(245,195,88,0.65)]" />
             </motion.div>
 
-            {/* Right Lantern */}
+            {/* Right Hanging Royal Lantern */}
             <motion.div
-              initial={{ opacity: 0, x: 16 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.15, duration: 0.5 }}
-              className="absolute -right-12 sm:-right-16 bottom-2 z-10"
+              initial={{ opacity: 0, y: -24, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.22, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute -right-11 sm:-right-14 -top-3 z-10 pointer-events-none"
             >
-              <IslamicLantern height={68} />
+              <IslamicLantern height={98} side="right" swingDelay={1.3} />
             </motion.div>
           </div>
 

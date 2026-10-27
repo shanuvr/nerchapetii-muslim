@@ -27,11 +27,11 @@ function WelcomeMock() {
 
       <div className="flex-1 flex flex-col items-center justify-center gap-2">
         <div className="relative flex items-center justify-center">
-          <IslamicLantern height={42} className="absolute -left-6" />
+          <IslamicLantern height={50} side="left" className="absolute -left-6 -top-2" />
           <div className="relative w-16 h-16 flex items-center justify-center">
             <HilalCrescent className="w-full h-full drop-shadow-[0_0_20px_rgba(52,211,153,0.7)]" />
           </div>
-          <IslamicLantern height={42} className="absolute -right-6" />
+          <IslamicLantern height={50} side="right" swingDelay={1.3} className="absolute -right-6 -top-2" />
         </div>
 
         <div className="text-center">
